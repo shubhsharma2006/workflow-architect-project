@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HR Workflow Designer — Premium light design system. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 220 30% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 240 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 250 90% 75%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 250 90% 96%;
+    --accent-foreground: 240 70% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 240 70% 60%;
+
+    --radius: 0.875rem;
+
+    /* Node accent colors */
+    --node-start: 142 71% 45%;
+    --node-task: 217 91% 60%;
+    --node-approval: 38 92% 50%;
+    --node-automated: 270 91% 65%;
+    --node-end: 0 72% 55%;
+
+    /* Effects */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-surface: linear-gradient(180deg, hsl(220 30% 99%), hsl(220 30% 97%));
+    --shadow-soft: 0 1px 2px hsl(222 47% 11% / 0.04), 0 4px 12px hsl(222 47% 11% / 0.04);
+    --shadow-elegant: 0 10px 40px -12px hsl(240 70% 60% / 0.25);
+    --shadow-node: 0 1px 3px hsl(222 47% 11% / 0.06), 0 8px 24px hsl(222 47% 11% / 0.08);
+    --shadow-node-selected: 0 0 0 2px hsl(var(--primary)), 0 12px 32px hsl(240 70% 60% / 0.3);
+
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 240 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 240 70% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 250 90% 70%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 250 90% 70%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-feature-settings: "cv02","cv03","cv04","cv11"; }
+}
+
+/* React Flow overrides */
+.react-flow__edge-path {
+  stroke: hsl(var(--primary) / 0.6);
+  stroke-width: 2;
+}
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:focus .react-flow__edge-path {
+  stroke: hsl(var(--primary));
+  stroke-width: 2.5;
+}
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 6;
+  animation: dashdraw 0.6s linear infinite;
+}
+@keyframes dashdraw { to { stroke-dashoffset: -12; } }
+
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: hsl(var(--background)) !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  transition: var(--transition-smooth);
+}
+.react-flow__handle:hover {
+  background: hsl(var(--primary)) !important;
+  transform: scale(1.4);
+}
+.react-flow__controls {
+  box-shadow: var(--shadow-soft) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: calc(var(--radius) - 4px) !important;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+.react-flow__controls-button:hover { background: hsl(var(--accent)) !important; }
+.react-flow__minimap {
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: calc(var(--radius) - 4px) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+.react-flow__attribution { background: transparent !important; font-size: 10px; opacity: 0.5; }
